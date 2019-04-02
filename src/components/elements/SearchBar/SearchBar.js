@@ -5,7 +5,7 @@ export class SearchBar extends Component {
 	state = {
 		value: ''
 	};
-	timeout = null;
+	timeout = '';
 	doSearch = e => {
 		e.preventDefault();
 		this.setState({

@@ -36,7 +36,9 @@ const MovieInfo = props => {
 							optimum="100"
 							low="40"
 							high="70"
-							value={props.movie.vote_average * 10}
+							value={
+								props.movie.vote_average ? props.movie.vote_average * 10 : '50'
+							}
 						/>
 						<p className="rmdb-score">{props.movie.vote_average}</p>
 					</div>

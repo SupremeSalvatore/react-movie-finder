@@ -14,7 +14,7 @@ const {REACT_APP_MOVIE_KEY, REACT_APP_BASE_URL} = process.env;
 class Home extends Component {
 	state = {
 		movies: [],
-		heroImage: null,
+		heroImage: '',
 		loading: false,
 		currentPage: 0,
 		totalPages: 0,
@@ -32,7 +32,6 @@ class Home extends Component {
 		}
 	}
 	searchMovies = searchTerm => {
-		console.log(searchTerm);
 		let endpoint = '';
 		this.setState({
 			movies: [],
@@ -68,9 +67,7 @@ class Home extends Component {
 				this.setState(
 					{
 						movies: [...movies, ...result.results],
-						heroImage:
-							this.state.heroImage ||
-							result.results[Math.floor(Math.random() * 20) + 1],
+						heroImage: this.state.heroImage || result.results[0],
 						loading: false,
 						currentPage: result.page,
 						totalPages: result.total_pages
@@ -130,9 +127,9 @@ class Home extends Component {
 						})}
 					</FourColGrid>
 					{loading && <Spinner />}
-					{currentPage <= totalPages && !loading ? (
+					{currentPage <= totalPages && !loading && (
 						<LoadMoreBtn text="Load More" onClick={this.loadMoreItems} />
-					) : null}
+					)}
 				</div>
 			</div>
 		);

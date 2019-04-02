@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './FourColGrid.css';
+
 const FourColGrid = props => {
 	const renderMovies = () => {
 		const gridMovies = props.children.map((movie, i) => {
